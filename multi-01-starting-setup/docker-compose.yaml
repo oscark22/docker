@@ -1,6 +1,7 @@
 services:
   mongodb:
     image: 'mongo'
+    # container_name: mongodb
     volumes:
       - data:/data/db
     # environment:

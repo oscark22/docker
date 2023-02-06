@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+type: Deployment
+metadata:
+  name: second-app-deployment
+spec:
+  replicas: 1
+  selector:
+    
+  template:
+    metadata:
+      labels:
+        app: second-app
+    spec:
+      containers:
+        - name: second-node
+          image: academind/kub-first-app:2

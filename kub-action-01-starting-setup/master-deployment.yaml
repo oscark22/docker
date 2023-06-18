@@ -1,20 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: second-app
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: second-app-deployment
-  labels:
-    group: example
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: second-app
-    # matchExpressions:
-    #   - key: app
-    #     operator: In
-    #     values:
-    #       - "second-app"
-    #       - "first-app"
   template:
     metadata:
       labels:
@@ -23,3 +28,5 @@ spec:
       containers:
         - name: second-node
           image: oscark22/kub-1:3
+---
+
